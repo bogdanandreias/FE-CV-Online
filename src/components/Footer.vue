@@ -1,10 +1,11 @@
 <template>
   <div>
     <footer>
-      <p>Going-To Internet</p>
+      <p>CV-Online</p>
       <p>
-        I makeas soon as possibale.You really like my work,if you don&#8217;t i
-        change this until you like I give you seticfaction result
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet
+        aliquet quam, sit amet tincidunt lorem efficitur et. Maecenas pretium ex
+        a aliquam scelerisque.
       </p>
       <div class="social-icons">
         <a href="#"
