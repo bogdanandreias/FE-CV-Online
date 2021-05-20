@@ -1,48 +1,42 @@
 <template>
-  <!--services-container---------------------------->
   <div class="services ">
-    <!--text-->
     <div class="services-text ">
       <p>Services</p>
       <p>Qualites Requaid</p>
       <p>
-        if you want make a software for your bussniess conatact me.I make as
-        soon as possibale.You really like my work, if you don&#8217;t i change
-        this until you like if you want make a software for your bussniess
-        conatact me.I make as soon
+        Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
+        volutpat in dolor nec lobortis. Orci varius natoque penatibus et magnis
+        dis parturient montes, nascetur ridiculus mus
       </p>
     </div>
     <div class="box-container">
-      <!--1------------->
       <div class="box-1">
         <span>1</span>
         <p class="heading">Web Design</p>
         <p class="details">
-          if you want make a software for your bussniess conatact me.I make as
-          soon as possibale.You really like my work, if you don&#8217;t i change
-          this until you like if you want.
+          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
+          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
+          magnis dis parturient montes, nascetur ridiculus mus
         </p>
         <button>Read More</button>
       </div>
-      <!--2------------->
       <div class="box-2">
         <span>2</span>
         <p class="heading">Web Devoloment</p>
         <p class="details">
-          if you want make a software for your bussniess conatact me.I make as
-          soon as possibale.You really like my work, if you don&#8217;t i change
-          this until you like if you want.
+          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
+          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
+          magnis dis parturient montes, nascetur ridiculus mus
         </p>
         <button>Read More</button>
       </div>
-      <!--3------------->
       <div class="box-3">
         <span>3</span>
         <p class="heading">Security SEO</p>
         <p class="details">
-          if you want make a software for your bussniess conatact me.I make as
-          soon as possibale.You really like my work, if you don&#8217;t i change
-          this until you like if you want.
+          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
+          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
+          magnis dis parturient montes, nascetur ridiculus mus
         </p>
         <button>Read More</button>
       </div>
