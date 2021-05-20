@@ -1,5 +1,4 @@
 <template>
-  <!--if you have any project in your mind contact me-->
   <div class="contact-me">
     <p>If You Have Any Project In Your Mind ?</p>
     <button>Contact me</button>

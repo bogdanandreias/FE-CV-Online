@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="about-container">
-      <!--img-->
       <img src="../assets/about_photo.png" />
-      <!--about-me-text-->
       <div class="about-text">
         <p>About Me</p>
         <p>Devolper & Student</p>

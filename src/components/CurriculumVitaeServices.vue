@@ -1,7 +1,5 @@
 <template>
-  <!--services-container---------------------------->
   <div class="services ">
-    <!--text-->
     <div class="services-text ">
       <p>Services</p>
       <p>Qualites Requaid</p>
@@ -13,7 +11,6 @@
       </p>
     </div>
     <div class="box-container">
-      <!--1------------->
       <div class="box-1">
         <span>1</span>
         <p class="heading">Web Design</p>
@@ -24,7 +21,6 @@
         </p>
         <button>Read More</button>
       </div>
-      <!--2------------->
       <div class="box-2">
         <span>2</span>
         <p class="heading">Web Devoloment</p>
@@ -35,7 +31,6 @@
         </p>
         <button>Read More</button>
       </div>
-      <!--3------------->
       <div class="box-3">
         <span>3</span>
         <p class="heading">Security SEO</p>
