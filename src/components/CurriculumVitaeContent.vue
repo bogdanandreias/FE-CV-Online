@@ -18,9 +18,6 @@ export default {
 </script>
 
 <style scoped>
-.content-container {
-  height: 100vh;
-}
 .model {
   height: 530px;
   position: absolute;
