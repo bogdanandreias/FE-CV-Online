@@ -160,11 +160,11 @@ button{
   text-transform: uppercase;
   font-weight: 600;
   font-family: 'Nunito', sans-serif;
-  background: -webkit-linear-gradient(left, #0B0B0B, #403E3E);
+  background: -webkit-linear-gradient(left, #7c7c7c, #8d8c8c);
 }
 
 .submit:hover{
-  background: -webkit-linear-gradient(left, #403E3E, #0B0B0B);
+  background: -webkit-linear-gradient(left, #8d8c8c, #7c7c7c);
 }
 
 .forgot-pass{
