@@ -19,12 +19,12 @@
         <div class="img">
           <div class="img-text m-up">
             <h2>New here?</h2>
-            <p>Sign up and discover great amount of new opportunities!</p>
+            <p>Sign up and discover a revolutionary design of portofolios!</p>
           </div>
           <div class="img-text m-in">
             <h2>One of us?</h2>
             <p>
-              If you already has an account, just sign in. We've missed you!
+              If you already have an account, just sign in.
             </p>
           </div>
           <div class="img-btn" @click="swapAuth">
@@ -81,7 +81,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: -webkit-linear-gradient(bottom, #181515, #ffffff);
+  background: -webkit-linear-gradient(bottom, #E6E3E3, #ffffff);
   font-family: 'Nunito', sans-serif;
 }
 
@@ -115,6 +115,7 @@ h2{
   width: 100%;
   font-size: 30px;
   text-align: center;
+  color: #1A1A1A;
 }
 
 label{
