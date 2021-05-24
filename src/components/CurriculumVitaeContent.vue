@@ -1,4 +1,5 @@
 <template>
+  <section />
   <div class="content-container">
     <div class="text-container">
       <p>Hello,</p>
@@ -7,7 +8,7 @@
       <button class="hire-btn">Hire me</button>
       <button class="down-cv">Download CV</button>
     </div>
-    <img alt="model" class="model" src="../assets/cv_header.png">
+    <img alt="model" class="model" src="../assets/cv_header.png" />
   </div>
 </template>
 
@@ -18,6 +19,14 @@ export default {
 </script>
 
 <style scoped>
+section {
+  width: 100%;
+  height: 95vh;
+  background-image: url("../assets/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
 .model {
   height: 530px;
   position: absolute;
