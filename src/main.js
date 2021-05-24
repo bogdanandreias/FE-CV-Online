@@ -7,9 +7,11 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
+import router from "./router/router";
+
 library.add(faFacebook);
 library.add(faTwitter);
 library.add(faInstagram);
 library.add(faYoutube);
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
+createApp(App).use(router).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
