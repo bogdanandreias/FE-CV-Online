@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="about-container">
-      <img src="../assets/about_photo.png" />
+      <img src="../../assets/about_photo.png" />
       <div class="about-text">
         <p>About Me</p>
         <p>Devolper & Student</p>
@@ -77,5 +77,53 @@ export default {
   border: none;
   font-family: calibri;
   background-color: #262525;
+}
+
+@media(max-width:1000px){
+
+	.about-container{
+		width:90%;
+		border-radius: 10px;
+	}
+	.about-container img{
+		height: 200px;
+	}
+	.about-text{
+		width: 400px;
+	}
+	.about-text p:nth-child(1){
+		font-size: 20px;
+	}
+	.about-text p:nth-child(2){
+		font-size: 10px;
+	}
+	
+	.about-text p:nth-child(3),
+	.about-text p:nth-child(4){
+		font-size: 14px;
+	}
+	.services{
+		padding: 2% 5% 0px 5%;
+	}
+	.box-container{
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
+
+@media(max-width:750px){
+
+	.about-container{
+		top: 0px;
+		flex-direction: column;
+		width:90%;
+		height: auto;
+		padding: 30px 0px;
+		align-items: center;
+	}
+	.about-text{
+		width:90%;
+		text-align: center;
+	}
 }
 </style>

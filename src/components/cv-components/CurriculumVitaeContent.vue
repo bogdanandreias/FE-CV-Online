@@ -8,7 +8,7 @@
       <button class="hire-btn">Hire me</button>
       <button class="down-cv">Download CV</button>
     </div>
-    <img alt="model" class="model" src="../assets/cv_header.png" />
+    <img alt="model" class="model" src="../../assets/cv_header.png" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
 section {
   width: 100%;
   height: 95vh;
-  background-image: url("../assets/bg.png");
+  background-image: url("../../assets/bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -86,5 +86,45 @@ section {
 }
 button:active {
   transform: scale(1.1);
+}
+
+@media(max-width:1000px){
+	.model{
+		height: 460px;
+		left: 90%;
+		transform: translateX(-90%);
+	}
+	.text-container{
+		top:46%;
+	}
+	.text-container button{
+		margin: 5px;
+	}
+}
+
+@media(max-width:750px){
+	section{
+		background-image:none;
+		background-color:#f7f7f7;
+	}
+	.model{
+		display: none;
+	}
+	.toggle{
+		display: block;
+	}
+	.text-container p:nth-child(2){
+		line-height: 40px;
+		margin: 0px;
+		padding: 0px;
+		
+	}
+	.text-container{
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		width: 80%;
+	}
+	
 }
 </style>

@@ -149,4 +149,10 @@ footer {
   font-size: 20px;
   color: #2b2b2b;
 }
+
+@media (max-width: 750px) {
+  footer p:nth-child(2) {
+    width: 90%;
+  }
+}
 </style>
