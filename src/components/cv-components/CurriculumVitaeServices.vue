@@ -99,13 +99,13 @@ export default {
 }
 
 .box-1 {
-  background-image: url("../assets/services-1.png");
+  background-image: url("../../assets/services-1.png");
 }
 .box-2 {
-  background-image: url("../assets/services-2.png");
+  background-image: url("../../assets/services-2.png");
 }
 .box-3 {
-  background-image: url("../assets/servies-3.png");
+  background-image: url("../../assets/servies-3.png");
 }
 .box-1 span,
 .box-2 span,
@@ -146,5 +146,30 @@ export default {
   border: none;
   outline: none;
   border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+  .services {
+    padding: 2% 5% 0px 5%;
+  }
+  .box-container {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .services {
+    height: auto;
+  }
+  .box-1,
+  .box-2,
+  .box-3 {
+    flex-grow: 1;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 750px) {
+  .services-text {
+    width: 100%;
+  }
 }
 </style>

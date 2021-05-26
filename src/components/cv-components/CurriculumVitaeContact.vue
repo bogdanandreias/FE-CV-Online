@@ -17,7 +17,7 @@ export default {
   height: 280px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../assets/project in your mind.png");
+  background-image: url("../../assets/project in your mind.png");
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,5 +39,32 @@ export default {
   outline: none;
   font-size: 14px;
   font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+  .contact-me {
+    height: 200px;
+  }
+  .contact-me p {
+    font-size: 26px;
+  }
+  .contact-me button {
+    font-size: 14px;
+    height: 35px;
+    width: 160px;
+  }
+}
+
+@media (max-width: 750px) {
+  .contact-me {
+    height: 180px;
+  }
+  .contact-me p {
+    font-size: 18px;
+  }
+  .contact-me button {
+    width: 150px;
+    height: 33px;
+  }
 }
 </style>
