@@ -21,6 +21,20 @@ export default createStore({
         social: {facebook: null, instagram: null, youtube: null, twitter: null},
         _id: null,
     },
+    toastConfig: {
+      position: "top-right",
+      timeout: 3000,
+      closeOnClick: true,
+      pauseOnFocusLoss: true,
+      pauseOnHover: true,
+      draggable: true,
+      draggablePercent: 0.6,
+      showCloseButtonOnHover: false,
+      hideProgressBar: false,
+      closeButton: "button",
+      icon: true,
+      rtl: false
+    }
   },
   mutations: {
     updateUser (state, user) {
