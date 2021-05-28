@@ -2,13 +2,13 @@
   <!--navigation------------------------->
   <nav>
     <!--logo-->
-    <a href="#" class="logo">CV-Online</a>
+      <router-link to="/" class="logo">CV Online</router-link>
     <!--menu-->
     <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact us</a></li>
-      <li><a href="#">Team</a></li>
+      <router-link to="/">Home</router-link>
+      <!-- <li><a href="#" class="active">Home</a></li> -->
+      <router-link to="/edit">Edit</router-link>
+      <a @click="logout">Logout</a>
     </ul>
     <!--bars--------------->
     <div class="toggle"></div>
@@ -16,27 +16,26 @@
 </template>
 
 <script>
-import $ from "jquery";
-
 export default {
   name: "Navbar",
   mounted() {
-    this.$nextTick(function() {
-      $(".toggle").click(function() {
-        $(".toggle").toggleClass("active");
-        $("nav").toggleClass("active");
-      });
-    });
   },
+  methods: {
+    logout() {
+      localStorage.removeItem('jwt')
+      this.$router.push('/login')
+      location.reload();
+    },
+  }
 };
 </script>
-
-<style scoped>
+<style lang="scss" scoped>
 ul {
   list-style: none;
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 nav {
@@ -61,7 +60,7 @@ nav ul {
   background-image: url("../assets/menu-button.png");
 }
 
-nav ul li a {
+ul a {
   margin: 30px;
   font-family: myriad pro regular;
   color: #505050;
@@ -72,8 +71,12 @@ nav ul li a {
   font-family: RoadTest;
   color: #000000;
   font-size: 22px;
+  &.router-link-active {
+    color: #000000;
+    font-weight: normal;
+  }
 }
-.active {
+.router-link-active {
   color: #2d2a2a;
   font-weight: bold;
 }
