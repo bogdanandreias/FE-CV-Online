@@ -1,7 +1,7 @@
 <template>
-  <Navbar />
+  <Navbar v-if="!['Login'].includes($route.name)"/>
   <router-view></router-view>
-  <Footer />
+  <Footer v-if="!['Login'].includes($route.name)"/>
 </template>
 
 <script>
