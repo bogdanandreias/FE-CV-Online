@@ -56,6 +56,9 @@
   </body>
 </template>
 <script>
+
+import { useToast } from "vue-toastification";
+
 export default {
   name: "Login",
   data() { 
@@ -78,7 +81,7 @@ export default {
       },
       loginUser() {
         let api_url = this.$store.state.api_url
-        if(this.login.email == '' || this.login.password == '') return alert("Fill in all fields.")
+        if(this.login.email == '' || this.login.password == '') return this.toast.warning("Fill in all fields.", this.$store.state.toastConfig);
 
         this.axios.post(api_url + 'user/login', { 
           email: this.login.email,
@@ -87,18 +90,19 @@ export default {
             if(response.data.auth == 'true') {
               localStorage.setItem('jwt', response.data.token)
               this.$router.push('/')
+              this.toast.success('Login!', this.$store.state.toastConfig);
             } else {
-              alert(response.data.msg)
+              this.toast.warning("Invalid.", this.$store.state.toastConfig);
             }
         }).catch(err => {
           console.log('err ' + err)
-          alert('Something went wrong')
+          this.toast.error('Something went wrong', this.$store.state.toastConfig);
         })
       },
       registerUser() {
         console.log(this.register)
         let api_url = this.$store.state.api_url
-        if(this.register.email == '' || this.register.password == '' || this.register.firstName == '' || this.register.lastName == '') return alert("Fill in all fields.")
+        if(this.register.email == '' || this.register.password == '' || this.register.firstName == '' || this.register.lastName == '') return this.toast.warning("Fill in all fields.", this.$store.state.toastConfig);
 
         this.axios.post(api_url + 'user/register', {
           firstName: this.register.firstName,
@@ -108,15 +112,20 @@ export default {
         }).then(response =>{
             if(response.data.auth == 'true') {
               localStorage.setItem('jwt', response.data.token)
+              this.toast.success('Enjoy!', this.$store.state.toastConfig);
               this.$router.push('/')
             } else {
-              alert(response.data.msg)
+              this.toast.warning("Invalid.", this.$store.state.toastConfig);
             }
         }).catch(err => {
           console.log('err ' + err)
-          alert('Something went wrong')
+          this.toast.error('Something went wrong', this.$store.state.toastConfig);
         })
       }
+  },
+  setup() {
+    const toast = useToast();
+    return { toast }
   }
 }
 </script>

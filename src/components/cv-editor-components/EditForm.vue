@@ -143,6 +143,9 @@
 </template>
 
 <script>
+
+import { useToast } from "vue-toastification";
+
 export default {
   name: "EditForm",
   data() {
@@ -200,8 +203,12 @@ export default {
       })
     },
     submitForm() {
+      if(this.defaultUser.imageInfo === undefined) return this.toast.warning('Please upload your image!', this.$store.state.toastConfig);
+      if(this.defaultUser.pdfInfo === undefined) return this.toast.warning('Please upload your cv!', this.$store.state.toastConfig);
+      if(this.defaultUser.imageInfo.size > 5000000) return this.toast.warning('Your image should be less than 5mb!', this.$store.state.toastConfig);
+      if(this.defaultUser.pdfInfo.size > 5000000) return this.toast.warning('Your pdf should be less than 5mb!', this.$store.state.toastConfig);
       let formData = new FormData()
-      console.log(this.defaultUser.firstName)
+      // console.log(this.defaultUser.firstName)
       formData.append('firstName', this.defaultUser.firstName)
       formData.append('lastName', this.defaultUser.lastName)
       formData.append('image', this.defaultUser.imageInfo)
@@ -211,7 +218,8 @@ export default {
       this.axios.put(this.$store.state.api_url + 'user/info', formData, { headers: { token: localStorage.getItem('jwt')}})
           .then(response => {
             console.log(response)
-            alert("changes have been made")
+            this.toast.success('Changes have been made!', this.$store.state.toastConfig);
+            // alert("changes have been made")
           })
           .catch(err => {
             console.log(err)
@@ -220,6 +228,10 @@ export default {
           })
     },
   },
+  setup() {
+    const toast = useToast();
+    return { toast }
+  }
 };
 </script>
 
