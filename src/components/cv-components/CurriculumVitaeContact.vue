@@ -1,17 +1,25 @@
 <template>
   <div class="contact-me">
     <p>If You Have Any Project In Your Mind ?</p>
-    <button>Contact me</button>
+    <div >
+      <a class="button" :href="`mailto:` + user.email">Contact me</a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "CurriculumVitaeContact",
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  }
 };
 </script>
 
 <style scoped>
+
 .contact-me {
   width: 100%;
   height: 280px;
@@ -29,9 +37,9 @@ export default {
   font-size: 30px;
   font-family: calibri;
   font-weight: bold;
-  border-bottom: 2px solid #ffffff;
 }
-.contact-me button {
+.contact-me .button {
+  border-radius: 10px;
   width: 200px;
   height: 40px;
   background-color: #ffffff;
@@ -39,6 +47,10 @@ export default {
   outline: none;
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
+  padding: 12px 50px;
+  text-decoration: none;
+  color: #191919;
 }
 
 @media (max-width: 1000px) {
@@ -48,7 +60,7 @@ export default {
   .contact-me p {
     font-size: 26px;
   }
-  .contact-me button {
+  .contact-me .button {
     font-size: 14px;
     height: 35px;
     width: 160px;

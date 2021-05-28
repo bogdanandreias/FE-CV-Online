@@ -3,51 +3,48 @@
     <footer>
       <p>CV-Online</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquet
-        aliquet quam, sit amet tincidunt lorem efficitur et. Maecenas pretium ex
-        a aliquam scelerisque.
+        Acesta este un cv online. Enjoy.
       </p>
       <div class="social-icons">
-        <a href="#"
+        <a :href="user.social.facebook"
           ><i
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'facebook' }"/></i
         ></a>
-        <a href="#"
+        <a :href="user.social.twitter"
           ><i
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'twitter' }"/></i
         ></a>
-        <a href="#"
+        <a :href="user.social.instagram"
           ><i
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'instagram' }"/></i
         ></a>
-        <a href="#"
+        <a :href="user.social.youtube"
           ><i
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'youtube' }"/></i
         ></a>
       </div>
-      <p class="copyright">Copyright by Deluxe Squad</p>
     </footer>
     <div class="social">
-      <a href="#"
+      <a :href="user.social.facebook"
         ><i
           ><font-awesome-icon
             :icon="{ prefix: 'fab', iconName: 'facebook' }"/></i
       ></a>
-      <a href="#"
+      <a :href="user.social.twitter"
         ><i
           ><font-awesome-icon
             :icon="{ prefix: 'fab', iconName: 'twitter' }"/></i
       ></a>
-      <a href="#"
+      <a :href="user.social.instagram"
         ><i
           ><font-awesome-icon
             :icon="{ prefix: 'fab', iconName: 'instagram' }"/></i
       ></a>
-      <a href="#"
+      <a :href="user.social.youtube"
         ><i
           ><font-awesome-icon
             :icon="{ prefix: 'fab', iconName: 'youtube' }"/></i
@@ -59,6 +56,11 @@
 <script>
 export default {
   name: "Footer",
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  }
 };
 </script>
 

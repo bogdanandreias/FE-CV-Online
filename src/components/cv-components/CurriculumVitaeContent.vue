@@ -3,10 +3,10 @@
   <div class="content-container">
     <div class="text-container">
       <p>Hello,</p>
-      <p>I&#8217;M FABIAN</p>
-      <p>Computer Science Senior<br />& Programming Intern</p>
+      <p class="user-name">I&#8217;M {{user.firstName}}</p>
+      <p>{{user.cv.occupation}}</p>
       <button class="hire-btn">Hire me</button>
-      <button class="down-cv">Download CV</button>
+      <button @click="openCv()" class="down-cv">Open CV</button>
     </div>
     <img alt="model" class="model" src="../../assets/cv_header.png" />
   </div>
@@ -15,10 +15,29 @@
 <script>
 export default {
   name: "CurriculumVitaeContent",
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  },
+  methods: {
+    openCv() {
+      window.open(this.$store.state.uploads_url + this.$store.state.user.pdf, '_blank');
+    },
+  }
 };
 </script>
 
 <style scoped>
+.text-container button {
+  cursor: pointer;
+}
+.text-container button:first-of-type {
+  margin: 0;
+}
+.user-name {
+  text-transform: uppercase;
+}
 section {
   width: 100%;
   height: 95vh;
