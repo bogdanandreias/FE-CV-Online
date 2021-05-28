@@ -1,5 +1,5 @@
 <template>
-    <CurriculumVitaeContent />
+    <CurriculumVitaeContent  />
     <CurriculumVitaeAbout />
     <CurriculumVitaeServices />
     <CurriculumVitaeContact />
@@ -19,6 +19,21 @@ export default {
     CurriculumVitaeServices,
     CurriculumVitaeContact,
   },
+  created(){
+    this.getUserInfo()
+  },
+  methods: {
+    getUserInfo () {
+      this.axios.get(this.$store.state.api_url + 'user/info', { headers: { token: localStorage.getItem('jwt')}})
+      .then(({data}) => {
+        // console.log(data)
+        this.$store.commit('updateUser', data)
+      })
+      .catch(err => {
+        if(err) throw err
+      })
+    },
+  }
 };
 </script>
 
