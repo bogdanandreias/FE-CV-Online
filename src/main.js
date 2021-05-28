@@ -10,6 +10,9 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
+import Toast from "vue-toastification"
+import "vue-toastification/dist/index.css"
+
 import router from "./router/router";
 
 library.add(faFacebook);
@@ -17,4 +20,4 @@ library.add(faTwitter);
 library.add(faInstagram);
 library.add(faYoutube);
 
-createApp(App).use(store).use(VueAxios, axios).use(router).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
+createApp(App).use(store).use(VueAxios, axios).use(router).use(Toast).component("font-awesome-icon", FontAwesomeIcon).mount('#app')
