@@ -5,14 +5,13 @@
         <h2>Sign In</h2>
         <label>
           <span>Email Address</span>
-          <input type="email" name="email" />
+          <input type="email" v-model="login.email" name="email" />
         </label>
         <label>
           <span>Password</span>
-          <input type="password" name="password" />
+          <input type="password" v-model="login.password" name="password" />
         </label>
-        <button class="submit" type="button">Sign In</button>
-        <p class="forgot-pass">Forgot Password ?</p>
+        <button @click="loginUser" class="submit" type="button">Sign In</button>
       </div>
 
       <div class="sub-cont">
@@ -35,22 +34,22 @@
         <div class="form sign-up">
           <h2>Sign Up</h2>
           <label>
-            <span>Name</span>
-            <input type="text" />
+            <span>First Name</span>
+            <input type="text" v-model="register.firstName" />
+          </label>
+          <label>
+            <span>Last Name</span>
+            <input type="text" v-model="register.lastName" />
           </label>
           <label>
             <span>Email</span>
-            <input type="email" />
+            <input type="email" v-model="register.email" />
           </label>
           <label>
             <span>Password</span>
-            <input type="password" />
+            <input type="password" v-model="register.password" />
           </label>
-          <label>
-            <span>Confirm Password</span>
-            <input type="password" />
-          </label>
-          <button type="button" class="submit">Sign Up Now</button>
+          <button @click="registerUser" type="button" class="submit">Sign Up Now</button>
         </div>
       </div>
     </div>
@@ -59,12 +58,67 @@
 <script>
 export default {
   name: "Login",
+  data() { 
+    return {
+      login: {
+        email: '',
+        password: ''
+      },
+      register: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
   methods: {
       swapAuth() {
           document.querySelector('.cont').classList.toggle('s-signup')
+      },
+      loginUser() {
+        let api_url = this.$store.state.api_url
+        if(this.login.email == '' || this.login.password == '') return alert("Fill in all fields.")
+
+        this.axios.post(api_url + 'user/login', { 
+          email: this.login.email,
+          password: this.login.password
+        }).then(response =>{
+            if(response.data.auth == 'true') {
+              localStorage.setItem('jwt', response.data.token)
+              this.$router.push('/')
+            } else {
+              alert(response.data.msg)
+            }
+        }).catch(err => {
+          console.log('err ' + err)
+          alert('Something went wrong')
+        })
+      },
+      registerUser() {
+        console.log(this.register)
+        let api_url = this.$store.state.api_url
+        if(this.register.email == '' || this.register.password == '' || this.register.firstName == '' || this.register.lastName == '') return alert("Fill in all fields.")
+
+        this.axios.post(api_url + 'user/register', {
+          firstName: this.register.firstName,
+          lastName: this.register.lastName,
+          email: this.register.email,
+          password: this.register.password
+        }).then(response =>{
+            if(response.data.auth == 'true') {
+              localStorage.setItem('jwt', response.data.token)
+              this.$router.push('/')
+            } else {
+              alert(response.data.msg)
+            }
+        }).catch(err => {
+          console.log('err ' + err)
+          alert('Something went wrong')
+        })
       }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -89,6 +143,10 @@ input, button{
   border:none;
   outline: none;
   background: none;
+}
+
+.cont, .sub-cont {
+  border-radius: 10px;
 }
 
 .cont{
@@ -208,6 +266,7 @@ button{
   width: 260px;
   height: 100%;
   padding-top: 360px;
+  border-radius: 10px;
 }
 
 .img:before{
