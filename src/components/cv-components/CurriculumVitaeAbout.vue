@@ -1,24 +1,13 @@
 <template>
   <div>
     <div class="about-container">
-      <img src="../../assets/about_photo.png" />
+      <img :src='$store.state.uploads_url + user.image' />
       <div class="about-text">
         <p>About Me</p>
-        <p>Devolper & Student</p>
-        <p>
-          Hello,My name is Bertea Fabian. I am a Devolper at Principal33.If you
-          have asany Project or if you want make a software for your business
-          conatact me.I make as soon as possibale.You really like my work,if you
-          don&#8217;t like my work i'll change it until I give you a
-          satisfaction result.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-          lorem erat. Nunc ut tempor est, non luctus justo. Quisque sed bibendum
-          purus.
-        </p>
-        <button>Hire Me</button>
-        <button>Download CV</button>
+        <p>{{user.cv.occupation}}</p>
+        <p>{{user.cv.about}}</p>
+        <button class="hire-btn">Hire Me</button>
+        <button @click="openCv()" class="down-cv">Open CV</button>
       </div>
     </div>
   </div>
@@ -27,10 +16,47 @@
 <script>
 export default {
   name: "CurriculumVitaeAbout",
-};
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  },
+  methods: {
+    openCv() {
+      window.open(this.$store.state.uploads_url + this.$store.state.user.pdf, '_blank');
+    },
+  }
+}
 </script>
 
 <style scoped>
+.about-text button {
+  width: 130px;
+  height: 42px;
+  border-radius: 10px;
+  font-family: calibri;
+  font-weight: bold;
+  font-size: 14px;
+  outline: none;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.about-text button:first-of-type {
+  margin: 0;
+}
+.hire-btn {
+  border: 2px solid #373636;
+  color: #373636;
+  background-color: transparent;
+}
+.down-cv {
+  background-color: #0b0b0b;
+  color: #fff;
+  border: none;
+}
+button:active {
+  transform: scale(1.1);
+}
 .about-container {
   width: 80%;
   height: 330px;

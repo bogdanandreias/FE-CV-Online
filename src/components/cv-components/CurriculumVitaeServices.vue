@@ -2,7 +2,7 @@
   <div class="services ">
     <div class="services-text ">
       <p>Services</p>
-      <p>Qualites Requaid</p>
+      <p>Calitatile mele</p>
       <p>
         Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
         volutpat in dolor nec lobortis. Orci varius natoque penatibus et magnis
@@ -12,33 +12,18 @@
     <div class="box-container">
       <div class="box-1">
         <span>1</span>
-        <p class="heading">Web Design</p>
-        <p class="details">
-          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
-          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus
-        </p>
-        <button>Read More</button>
+        <p class="heading">{{user.cv.skill1.title}}</p>
+        <p class="details">{{user.cv.skill1.description}}</p>
       </div>
       <div class="box-2">
         <span>2</span>
-        <p class="heading">Web Devoloment</p>
-        <p class="details">
-          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
-          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus
-        </p>
-        <button>Read More</button>
+        <p class="heading">{{user.cv.skill2.title}}</p>
+        <p class="details">{{user.cv.skill2.description}}</p>
       </div>
       <div class="box-3">
         <span>3</span>
-        <p class="heading">Security SEO</p>
-        <p class="details">
-          Phasellus eu neque auctor, consequat arcu non, viverra ex. Nullam
-          volutpat in dolor nec lobortis. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus
-        </p>
-        <button>Read More</button>
+        <p class="heading">{{user.cv.skill3.title}}</p>
+        <p class="details">{{user.cv.skill3.description}}</p>
       </div>
     </div>
   </div>
@@ -47,6 +32,11 @@
 <script>
 export default {
   name: "CurriculumVitaeServices",
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  }
 };
 </script>
 
@@ -96,9 +86,11 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 0px 4px;
+  background-color: #191919;
+  border-radius: 20px;
 }
 
-.box-1 {
+/* .box-1 {
   background-image: url("../../assets/services-1.png");
 }
 .box-2 {
@@ -106,7 +98,7 @@ export default {
 }
 .box-3 {
   background-image: url("../../assets/servies-3.png");
-}
+} */
 .box-1 span,
 .box-2 span,
 .box-3 span {
