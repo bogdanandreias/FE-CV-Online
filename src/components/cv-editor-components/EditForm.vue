@@ -2,14 +2,14 @@
   <div class="wrapper">
     <h2>Edit CV</h2>
     <div id="error_message"></div>
-    <form id="myform">
+    <form id="myform" v-if='defaultUser.firstName != ""'>
       <p>Details</p>
       <div class="input_field">
         <input
           type="text"
           placeholder="First Name"
           id="firstName"
-          v-model="firstName"
+          v-model="defaultUser.firstName"
           required
         />
       </div>
@@ -18,7 +18,7 @@
           type="text"
           placeholder="Last Name"
           id="lastName"
-          v-model="lastName"
+          v-model="defaultUser.lastName"
           required
         />
       </div>
@@ -27,7 +27,7 @@
           type="text"
           placeholder="Occupation"
           id="occupation"
-          v-model="occupation"
+          v-model="defaultUser.cv.occupation"
           required
         />
       </div>
@@ -35,7 +35,7 @@
         <textarea
           placeholder="About"
           id="about"
-          v-model="about"
+          v-model="defaultUser.cv.about"
           required
         ></textarea>
       </div>
@@ -44,16 +44,16 @@
         <p>Skill 1</p>
         <input
           type="text"
-          placeholder="Skill 1"
+          placeholder="Title"
           id="skill1"
-          v-model="skill1"
+          v-model="defaultUser.cv.skill1.title"
           required
         />
         <input
           type="text"
           placeholder="Description"
           id="skill1_description"
-          v-model="skill1_description"
+          v-model="defaultUser.cv.skill1.description"
           required
         />
       </div>
@@ -62,16 +62,16 @@
         <p>Skill 2</p>
         <input
           type="text"
-          placeholder="Skill 2"
+          placeholder="Title"
           id="skill2"
-          v-model="skill2"
+          v-model="defaultUser.cv.skill2.title"
           required
         />
         <input
           type="text"
           placeholder="Description"
           id="skill2_description"
-          v-model="skill2_description"
+          v-model="defaultUser.cv.skill2.description"
           required
         />
       </div>
@@ -80,16 +80,16 @@
         <p>Skill 3</p>
         <input
           type="text"
-          placeholder="Skill 3"
+          placeholder="Title"
           id="skill3"
-          v-model="skill3"
+          v-model="defaultUser.cv.skill3.title"
           required
         />
         <input
           type="text"
           placeholder="Description"
           id="skill3_description"
-          v-model="skill3_description"
+          v-model="defaultUser.cv.skill3.description"
           required
         />
       </div>
@@ -100,45 +100,45 @@
           type="text"
           placeholder="facebook"
           id="facebook"
-          v-model="facebook"
+          v-model="defaultUser.social.facebook"
           required
         />
         <input
           type="text"
           placeholder="instagram"
           id="instagram"
-          v-model="instagram"
+          v-model="defaultUser.social.instagram"
           required
         />
         <input
           type="text"
-          placeholder="linkedin"
-          id="linkedin"
-          v-model="linkedin"
+          placeholder="youtube"
+          id="youtube"
+          v-model="defaultUser.social.youtube"
           required
         />
         <input
           type="text"
           placeholder="twitter"
           id="twitter"
-          v-model="twitter"
+          v-model="defaultUser.social.twitter"
           required
         />
       </div>
       <hr />
       <div class="input_field">
         <p>Photo</p>
-        <input type="file" id="photo" required />
+        <input @change="onImageSelected" type="file" id="photo" required />
       </div>
       <hr />
       <div class="input_field">
         <p>Upload Cv</p>
-        <input type="file" id="cv" required />
-      </div>
-      <div class="btn">
-        <button @click.prevent="validate()">SUBMIT</button>
+        <input @change="onPdfSelected" type="file" id="cv" required />
       </div>
     </form>
+    <div class="btn">
+      <button @click="submitForm()">SUBMIT</button>
+    </div>
   </div>
 </template>
 
@@ -147,41 +147,77 @@ export default {
   name: "EditForm",
   data() {
     return {
-      firstName: "",
-      lastName: "",
-      occupation: "",
-      about: "",
-      skill1: "",
-      skill1_description: "",
-      skill2: "",
-      skill2_description: "",
-      skill3: "",
-      skill3_description: "",
-      facebook: "",
-      twitter: "",
-      linkedin: "",
-      instagram: "",
+      defaultUser: {
+        imageInfo: null,
+        pdfInfo: null,
+        firstName: "",
+        lastName: "",
+        cv: {
+          occupation: "",
+          about: "",
+          skill1: {
+            title: "",
+            description: "",
+          },
+          skill2: {
+            title: "",
+            description: "",
+          },
+          skill3: {
+            title: "",
+            description: "",
+          },
+        },
+        social: {
+          facebook: "",
+          twitter: "",
+          instagram: "",
+          youtube: "",
+        }
+      },
     };
   },
+  created() {
+    this.getUserInfo()
+  },
+  computed: {
+  },
   methods: {
-    validate() {
-      var error_message = document.getElementById("error_message");
-
-      error_message.style.padding = "10px";
-
-      var text;
-      if (this.firstName.length < 5 || this.lastName < 5) {
-        text = "Please Enter valid Name";
-        error_message.innerHTML = text;
-        return false;
-      }
-      if (this.about.length < 10) {
-        text = "Please Enter a longer About Description";
-        error_message.innerHTML = text;
-        return false;
-      }
-      alert("Form Submitted Successfully!");
-      return true;
+    onImageSelected(event) {
+      this.defaultUser.imageInfo = event.target.files[0]
+    },
+    onPdfSelected(event) {
+      this.defaultUser.pdfInfo = event.target.files[0]
+    },
+    getUserInfo () {
+      this.axios.get(this.$store.state.api_url + 'user/info', { headers: { token: localStorage.getItem('jwt')}})
+      .then(({data}) => {
+        this.defaultUser = data
+        this.$store.commit('updateUser', data)
+      })
+      .catch(err => {
+        if(err) throw err
+      })
+    },
+    submitForm() {
+      let formData = new FormData()
+      console.log(this.defaultUser.firstName)
+      formData.append('firstName', this.defaultUser.firstName)
+      formData.append('lastName', this.defaultUser.lastName)
+      formData.append('image', this.defaultUser.imageInfo)
+      formData.append('pdf', this.defaultUser.pdfInfo)
+      formData.append('cv', JSON.stringify(this.defaultUser.cv))
+      formData.append('social', JSON.stringify(this.defaultUser.social))
+      this.axios.put(this.$store.state.api_url + 'user/info', formData, { headers: { token: localStorage.getItem('jwt')}})
+          .then(response => {
+            console.log(response)
+            alert("changes have been made")
+          })
+          .catch(err => {
+            console.log(err)
+            alert("err", err)
+            if(err) throw err
+          })
     },
   },
 };
